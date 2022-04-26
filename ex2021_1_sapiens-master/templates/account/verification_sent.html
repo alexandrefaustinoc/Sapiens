@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    
+    <link rel="stylesheet" href="{% static 'css/changepassword1.css' %}">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <section class="first-section">
+        <div class="first-container">
+            <div class="logo-sapiens">
+                <img src="{% static 'images/logo-10anos.png' %}" alt="logo 10 anos">
+            </div>
+            <div class="white-line"></div>
+            <div class="logos">
+
+                <img src="{% static 'images/logo-50anos-padronizada.png' %}" alt="logo unipe 50 anos">
+                <img src="{% static 'images/logo-fabrica-padronizada.png' %}" alt=" logo fabrica de software">
+            </div>
+    </section>
+
+    <section class="second-section">
+        <div class="container">
+            <div class="logo-container">
+                <img src="{% static 'images/original_aniversario.png' %}" alt="Logo">
+            </div>
+                <h3>Cadastro</h3>
+                <div class="input-container">
+                    <p>Um e-mail foi enviado, por favor contate-nos caso não receba nos próximos minutos.</p>
+                </div>
+
+                <a href="https://wa.me/message/44GXA6IAP4MOL1">
+                    <button type="button">Contate-nos</button>
+                </a>
+            
+            <p class="footer">
+                <a href="{% url 'account_login' %}" class="footer-text">Já possui uma conta? <span class="yellow-color"> Faça login</span>
+                </a>
+            </p>
+
+        </div>
+    </section>
+
+
+</body>
+
+</html>

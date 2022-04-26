@@ -1,0 +1,81 @@
+{% load i18n %}
+{% load account %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    
+    <link rel="stylesheet" href="{% static 'css/changepassword1.css' %}">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <section class="first-section">
+        <div class="first-container">
+            <div class="logo-sapiens">
+                <img src="{% static 'images/logo-10anos.png' %}" alt="logo 10 anos">
+            </div>
+            <div class="white-line"></div>
+            <div class="logos">
+
+                <img src="{% static 'images/logo-50anos-padronizada.png' %}" alt="logo unipe 50 anos">
+                <img src="{% static 'images/logo-fabrica-padronizada.png' %}" alt=" logo fabrica de software">
+            </div>
+        </div>
+
+
+
+    </section>
+
+    
+    <section class="second-section">
+        <div class="container">
+            <div class="logo-container">
+                <img src="{% static 'images/original_aniversario.png' %}" alt="Logo">
+            </div>
+                <h3>Cadastro</h3>
+                {% if confirmation %}
+                {% user_display confirmation.email_address.user as user_display %}
+                <div class="input-container">
+                    <p>Por favor, confirme que {{ confirmation.email_address.email }} é o seu endereço de e-mail </p>
+                </div>
+
+                <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                    {% csrf_token %}
+                        <button type="submit">Confirmar</button>
+                    </form>
+
+                {% else %}
+                <div class="input-container">
+                    <p>Esse link de confirmação expirou ou não é válido, por favor,<a href="{% url 'account_signup' %} " class="yellow-color"> Cadastre-se</a> novamente ou entre em<a href="https://wa.me/message/44GXA6IAP4MOL1" class="yellow-color"> contato conosco</a></p>
+                </div>
+            {%endif%}
+
+
+            <p class="footer">
+                <a href="{% url 'account_login' %}" class="footer-text">Já possui uma conta? <span class="yellow-color"> Faça login</span>
+                </a>
+            </p>
+
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+

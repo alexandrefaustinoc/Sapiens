@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/historia.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/footer.css' %}">
+
+    <title>História Sapiens</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="wrapper">
+            <nav>
+                <div class="logo">
+                    <a href="{% url 'menu' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+                </div>
+                <ul class="nav-links">
+                    <li class="principal"><a href="{% url 'menu' %}">Início</a></li>
+                    
+                    <li class="principal"><a href="{% url 'programacao' event.slug %}">Programação</a></li>
+                    <li class="principal"><a>Aglomeração de Saberes</a>
+                        <ul>
+                            {% for room in rooms %}
+                                {% if room.slug != 'sapiens-familia' %}
+                                    <li class="hover submenu"><a href="{% url 'days' event.slug room.slug %}">{{room.name}}</a></li>
+                                {%endif%}
+                            {% endfor %}
+                            <li class="hover submenu"><a href="{% url 'apoiadores' event.slug %}">Equipe Apoiadora</a></li> 
+                        </ul>
+                    </li>
+                    <li class="principal"><a>Do Tempo do Ronca</a>
+                        <ul>
+                            <li class="hover submenu"><a href="{% url 'historia' event.slug %}">História</a></li>
+                            <li class="hover submenu"><a href="{% url 'edicoes_sapiens' event.slug %}">Edições Sapiens</a></li>
+                            <li class="hover submenu"><a href="{% url 'padlet' event.slug 'dois' 'mural' %}">Edição Atual</a></li>
+                        </ul>
+                    </li>
+                    <li class="principal"><a href="{% url 'days' event.slug 'sapiens-familia' %}">Sapiens Família</a></li>  
+                    <li class="principal"><a href="{% url 'desopilar' event.slug %}">Bora Desopilar?</a></li>
+                     
+                    <li class="principal"><a>{{user_name}}</a>
+                        <ul>
+                            
+                            <li class="hover submenu"><a href="{% url 'account_reset_password' %}">Redefinir senha</a></li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="hover botao" type="submit">Sair</button>
+                                </form>
+                            </li>
+                            {% if request.user.is_superuser %}
+                                <li class="hover submenu"> <a href="http://sapiens10anos.unipe.edu.br/admin/">Sala do Administrador</a></li>
+                            {% endif %}
+                            
+                        </ul>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="text-container">
+        <h1 class="mbottom title">Quer saber como essa história iniciou?</h1>
+
+        <h2 class="subtitulo-historia right">O COMEÇO</h2>
+        <p class="text right yellow">Professora Dra. Maria Izabel Cavalcanti Cabral </p>
+        <p class="text right yellow mbottom">(Ex- Pró-Reitora de Ensino de Graduação do UNIPÊ) </p>
+
+        <p class="text">Inicialmente quero agradecer à Professora Dra. Mariana Brito, Reitora, pelo convite formulado e pela oportunidade de fazer um resgate sobre o início de um evento tão importante: A Semana de Atualização Pedagógica (SAPIENS), promovida anualmente
+            pelo UNIPÊ.
+        </p>
+
+        <p class="text">Gostaria de uma breve apresentação: entrei no UNIPÊ em 2006, como Assessora de Avaliação Institucional, momento importante quando as Instituições de Ensino Superior se organizavam para apresentar seus relatórios institucionais em atendimento à
+            Lei do SINAES (Sistema Nacional de Avaliação da Educação Superior), conduzido pelo MEC. Em meados de 2011, a Professora Dra. Ana Flávia Fonseca assumiu a Reitoria do UNIPÊ e me convidou para assumir a Pró-Reitoria de Graduação. Em meados de
+            2014 assumi a Assessoria de Qualidade Acadêmica com o Professor Dr. Nuno Araújo e lá permaneci até setembro de 2018.</p>
+
+        <p class="text">Em 2012, com alguns meses na gestão na Pró-Reitoria de Graduação, antiga PREG, sentimos a necessidade de espaços mais amplos para discussão conjunta e compartilhamento de ideias e de projetos acadêmicos. Foi então projetada e realizada a I Semana
+            de Atualização da Política de Ensino de Graduação, uma iniciativa relevante em momentos de grande efervescência no Ensino Superior, quando o SINAES se impunha e o Exame Nacional de Avaliação do Desempenho do Estudante (ENADE) exigia novos
+            requisitos para o aprimoramento da qualidade dos cursos, trazendo implicações diretas na continuidade dos cursos de graduação. Outros desafios surgiam, tal como o ensino semipresencial e reformulações curriculares, visando currículos mais
+            flexíveis com aplicações de novas práticas pedagógicas, explorando tecnologias inovadoras.</p>
+
+        <p class="text">A I Semana de Atualização da Política do Ensino de Graduação, realizada em julho de 2012, visou discutir a política de ensino de graduação, o alinhamento pedagógico dos cursos, a integração da Graduação com a Pós-Graduação e a disseminação de
+            boas práticas pedagógicas.</p>
+
+        <p class="text">Foram três dias de intensa programação com a participação dos coordenadores de curso e da gestão superior da Instituição: reitoria, pró-reitorias acadêmicas e administrativa. Teve a contribuição relevante do Núcleo de Apoio Pedagógico (NAPE),
+            coordenado pela Professora Zezita Matos com o apoio das Professoras Maria Roberto e Maria das Graças Cesarino (in memoriam), entre outros assessores pedagógicos</p>
+
+        <p class="text">A repercussão foi muito boa. Compartilhar projetos, discutir novas propostas e ideias e disseminar boas práticas pedagógicas nos levou a dar continuidade, no ano seguinte.</p>
+
+        <p class="text">Na segunda edição deste evento, em julho de 2013, a Professora Dra. Mariana Brito, que havia assumido a Pró-Reitoria Adjunta de Graduação, em agosto de 2012, passou a coordenar o evento. Foi nesta edição que o evento recebeu a denominação de Semana
+            de Atualização Pedagógica (SAPIENS), ampliando sua oferta ao segmento docente e, sendo configurado para abordar temas relevantes à formação do professor, fomentando o trabalho colaborativo sob a ótica da inovação.</p>
+
+        <p class="text">Outra iniciativa foi trazer palestrantes de renome nacional para enriquecer o evento. Ênfases foram dadas às oficinas de trabalho temáticas, à apresentação de boas práticas/experiências exitosas, à promoção de encontros e apresentações culturais.</p>
+
+        <p class="text">A II Sapiens com duração de uma semana, focou em metodologias ativas, essenciais ao fortalecimento dos ensinos presencial e semipresencial.</p>
+
+        <p class="text">Os anos passaram, o evento SAPIENS cresceu, foi repaginado, inovou. E ao fazer parte do calendário acadêmico, demonstra o compromisso da Instituição com a qualidade dos serviços educacionais oferecidos. </p>
+
+        <h2 class="subtitulo-historia text right">O CONTINUUM...</h2>
+        <p class="text right yellow">Profa. Dra. Mariana de Brito Barbosa</p>
+        <p class="text right yellow mbottom">Reitora do UNIPÊ</p>
+
+        <p class="text">Uma coisa é aquilo que é dado, outra coisa é aquilo que é construído e a SAPIENS é construção. Sempre foi! E por ter como premissas: envolver, agregar, somar e ser o reflexo de um trabalho colaborativo e de partilha de experiências para fomentar
+            novas práticas, se apresenta como um evento que conseguiu ser reconhecido, esperado e valorizado pelos docentes do UNIPÊ.</p>
+
+        <p class="text">Quanto tive a oportunidade de organizar a II SAPIENS, em 2013, ampliando o evento para um modelo aberto a todos os docentes da instituição como o conhecemos, eu trouxe na bagagem a experiência positiva vivida na gestão do curso de Fisioterapia
+            e nas formações internas que fazíamos, permeadas por diálogo e construção coletiva, bem como a vivência de uma atualização profissional na Fiocruz que fazia naquele ano e que é popularmente conhecida como “Ativadores de Mudança”. Dentre outros
+            objetivos, o curso buscava fomentar mudança no processo educacional, por meio da utilização de metodologias ativas, transversalidade no processo de aprender, protagonismo do aluno e aprendizagem significativa, por meio da experienciação e
+            atribuição de significado.</p>
+
+        <p class="text">Consequentemente, a II SAPIENS buscou fomentar a experiência vivida neste curso e, por isso, se apresentou como um modelo “mão na massa”, repleto de oficinas e minicursos, convocada por meio de convite para participação voluntária e organizada
+            em horários flexíveis ao longo de uma semana. A proposta prioritária era suscitar o interesse dos docentes, permitindo que imergissem em reflexão e vivência de novos métodos de ensino e de concepção do espaço da sala de aula. Além disso, buscou-se
+            lhes ofertar protagonismo e, por isso, além da programação ofertada, abriu-se espaço para que professores de cada curso apresentassem suas experiências exitosas de ensino aos membros do NDE dos cursos da instituição.</p>
+
+        <p class="text">Com a colaboração da então equipe do NAPE, do UNIPEVIRTUAL e de docentes da casa que atuavam no curso da Fiocruz, a II SAPIENS superou as expectativas e teve uma participação de 200 professores, se apresentando como um evento bem avaliado e que
+            deixou o desejo de novas edições...</p>
+
+        <p class="text"> A corujinha de origami, nossa logomarca, surgiu nesta edição, talvez prevendo que além de novos conhecimentos, teríamos um belo voo pela frente, afinal, muitas outras novidades foram surgindo nas edições seguintes.</p>
+
+        <p class="text">Com a III SAPIENS nasceram os encontros de gestores (coordenadores e supervisores de estágios) e que nas novas edições foram se agregando para outros encontros, como os de coordenadores e docentes da pós-graduação, os com docentes de pesquisa,
+            extensão e toda sua interlocução com o ensino e momentos de aprofundamento para os NDE. Na III SAPIENS, nasceu também a maravilhosa SAPIENS KIDS que se acresceu a SAPIENS TEENS na quarta edição, envolvendo os filhos dos professores e permitindo
+            que esses pudessem estar mais presentes neste evento no mês de julho, que também é mês de recesso escolar dos pequenos.</p>
+
+        <p class="text">Até hoje, mais de 150 atividades formativas com temáticas envolvendo metodologias educacionais, processos avaliativos, gestão da sala de aula, diferentes tecnologias, ferramentas e inovações acadêmicas, aspectos do ser e do fazer docente, além
+            das novas concepções do futuro do ensino e da educação já foram trazidas em suas edições. Mais de 500 boas práticas apresentadas, cadernos com publicação dos resumos e, além disso tudo, engajamento, pois a participação dos docentes só cresceu
+            e evoluiu de um processo de atualização e novas aprendizagens pedagógicas para um momento que favorece a integração e envolvimento entre docentes de cursos distintos e em cada vez mais partilha para renovação e novas possibilidades acadêmicas.</p>
+
+        <p class="text">Independente de modificações na gestão, a SAPIENS manteve o seu continuum, a sua identidade, e foi se reinventando conforme as necessidades, ampliando as suas versões para o ser docente, tendo olhares sobre aspectos socioemocionais e, também,
+            para proporcionar cuidado, diversão e lazer. Afinal, não pode faltar num sorteio, um brinde, uma brincadeira e um lanchinho animado, né? </p>
+
+        <p class="text">E, mesmo com a pandemia, remodelou-se ao ensino remoto, tendo uma versão continuada que perdurou o ano inteiro de 2020, denominada WEBSAPIENS.</p>
+
+        <p class="text">A cada nova edição temos mais participação, mais envolvimento, mas reconhecimento, porque na verdade, tudo que se agrega a este momento é construído também pelos próprios docentes. Perpassa o olhar, a fala, a escuta, a participação, a pluralidade
+            e a individualidade de cada um. A SAPIENS completa 10 anos e é, portanto, esse reflexo do que professores comprometidos em um processo de educação qualificada podem fazer. </p>
+
+        <p class="text">A SAPIENS somos todos nós que acreditamos na mudança na e pela educação! Que venham muito mais anos... </p>
+
+        <p class="text right blue">Gostou? E não acaba por aqui... Ainda tem muito mais história pra contar... </p>
+        <p class="text right blue">Na publicação do caderno de boas práticas deste ano comemorativo, traremos um especial de cada edição, com depoimentos, detalhes, curiosidades e muito mais!
+        </p>
+        <p class="text right blue">Fique atento!
+        </p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="sec quickLinks">
+                <h2>Parceiros</h2>
+                <ul class="patrocinador-lista">
+                    <li><a href="https://wa.me/558331333473" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/hemocentro.png' %}" alt="Logo da Hemocentro: Educação pela Saúde" ></a></li>
+
+                    <li><a href="https://instagram.com/atelierdocebia?utm_medium=copy_link" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/atelier-doce-bia.png'%}" alt="Logo do Patrocinador Atelier Doce Bia"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583998280859&text=Oi%2C%20vim%20pela%20Sapiens!" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/bichos-e-caprichos.png' %}" alt="Logo do Patrocinador Bichos e Caprichos"></a></li>
+
+
+                    <li><a href="https://wa.me/message/M6TRUVSLVS76B1" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/livraria-do-luiz.png' %}" alt="Logo do Patrocinador Livraria do Luiz"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583986201300" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/oticassantory.png' %}" alt="Logo do Patrocinador Ótica Santory"></a></li>
+
+                    <li><a href="http://www.saobraz.com.br/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/saobraz.png' %}" alt="Logo do Patrocinador São Braz"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583988782279&text=Oi%20vim%20pela%20Sapiens!" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/wz-informatica.png'%}" alt="Logo do Patrocinador WZ Informática"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/message/IWINW2MNSKU3H1?src=qr" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/controle-med.png'%}" alt="Logo do Patrocinador Controle Med Lab"></a></li>
+
+                    <li><a href="https://www.instagram.com/diporte_/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/diporte.png'%}" alt="Logo do Patrocinador Diporte"></a></li>
+
+                    <li><a href="https://instagram.com/drtnt?utm_medium=copy_link" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/dr-tnt.png'%}" alt="Logo do Patrocinador Dr. TNT"></a></li>
+
+                    <li><a href="https://www.instagram.com/saudemedica/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/saude-medica.png'%}" alt="Logo do Patrocinador Saúde Médica"></a></li>
+                </ul>
+            </div>
+            <div class="bigPatrocinador-div">
+                <a href="https://instagram.com/ferrazemaul?utm_medium=copy_link" target="_blank"><img class="bigPatrocinador" src="{% static 'images/patrocinadores/ferraz-e-maul-assessoria.png' %}" alt="Logo do Patrocinador Ferraz e Maul"></a>
+                <a href="http://somoslema.com.br/" target="_blank"><img class="bigPatrocinador" src="{% static 'images/patrocinadores/lema-engenharia.png' %}" alt="Logo do Patrocinador Lema Engenharia"></a>
+            </div>
+
+            <div class="sec contact">
+                <h2>Informações para Contato</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span>Rodovia BR-230,KM 22, S/N - Água Fria, João Pessoa</span>
+                    </li>
+                    <ul class="contato">
+                        <li><span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <p><a href="mailto:sapiens10anos@unipe.edu.br">sapiens10anos@unipe.edu.br</a></p>
+                        </li>
+    
+                        <li><span><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
+                            <p><a href="https://wa.me/message/44GXA6IAP4MOL1" target="_blank">Whatsapp</a></p>
+                        </li>
+    
+                        <ul class="sci">
+                            <li><a href="https://www.facebook.com/unipeoficial" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/unipeoficial" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/unipeoficial/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/user/UnipeOficial" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+      </footer>
+    
+    <div class="copyrightText">
+        <p>© 2021 Todos os direitos reservados.</p>
+    </div>
+    
+    
+</body>
+
+<script src="{% static 'js/header.js' %}"></script>
+</html>

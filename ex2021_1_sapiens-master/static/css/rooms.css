@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F7F7FC;
+    font-family: 'Poppins', sans-serif;
+    /* width: 100%; */
+    height: 100%;
+}
+
+
+
+.cards {
+    min-height:80vh;
+    width: 100%;
+    /* height: 100%; */
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1;
+    margin-top: 50px;
+    /* z-index: -1; */
+    /* height: 100vh; */
+}
+
+.cards-container {
+    /* overflow: hidden; */
+    box-shadow: 0px 32px 64px 0px rgba(17, 17, 17, 0.08);
+    border-radius: 10px;
+    position: relative;
+    width: 280px;
+    height: 320px;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    /* padding-bottom: 10px; */
+}
+
+.cards-container a {
+    color: #07396C;
+    font-weight: 600;
+    /* padding: 10px; */
+}
+
+.max-container {
+    /* min-height:100%; */
+    /* position:relative; */
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.banner-img {
+    position: absolute;
+    /* background-image: url(https://images.unsplash.com/photo-1582727657635-c771002bdada?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ); */
+    height: 10rem;
+    width: 100%;
+    /* height: 191px; */
+    /* width: 127px; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.responsive-img {
+    border-radius: 10px 10px 0px 0px;
+    height: 160px;
+    width: 280px;
+    object-fit: cover;
+}
+
+
+
+.info {
+    /* width: 8rem; */
+    margin-top: 4.5rem;
+}
+
+.name {
+    color: #07396C;
+    text-align: left;
+    /* padding: 10px; */
+    font-weight: 600;
+    font-size: 15px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description {
+    text-align: left;
+    /* padding: 10px; */
+    font-size: 15px;
+    color: #555555;
+    margin: 10px 0;
+}
+
+.link {
+    padding: 10px;
+    color: #07396C;
+    font-weight: 600;
+}
+
+.description-container {
+    padding: 20px 20px;
+    margin-top: 10rem;
+}
+
+
+@media (max-width: 1024px) {
+    .cards {
+        margin-top: 100px;
+    }
+
+}

@@ -1,0 +1,572 @@
+.slider{
+    width: 80%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 50px;                                  /*  NOVO */
+    margin-bottom: 50px;                                /*  NOVO */
+}
+.slides{
+    width: 500%;
+    height: 300px;
+    display: flex;    
+}
+
+.slides input{
+     display: none;
+}
+
+.slide{
+    width: 20%;
+    /* position: relative;   */                                 /*  NOVO */
+   /*  z-index: -1; */                                           /*  NOVO */
+    transition: 2s;
+}
+
+/*carrossel*/
+#items-wrapper {
+    width: 100%;
+    padding-top: 20px;
+}
+
+#items {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.item {
+    flex: none;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+}
+
+/* CSS for automatic navigation */
+
+.navigationAuto{
+    position: absolute;                                  /* NOVO */
+    /* z-index: -1;       */                                  /*  NOVO */
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    margin-top: 260px;
+}
+
+.navigationAuto div{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigationAuto div:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigationAuto .auto-btn1{
+    background: rgb(240, 205, 6);
+}
+#radio2:checked ~ .navigationAuto .auto-btn2{
+    background: rgb(240, 205, 6);
+}
+#radio3:checked ~ .navigationAuto .auto-btn3{
+    background: rgb(240, 205, 6);
+}
+#radio4:checked ~ .navigationAuto .auto-btn4{
+    background: rgb(240, 205, 6);
+}
+#radio5:checked ~ .navigationAuto .auto-btn5{
+    background: rgb(240, 205, 6);
+}
+
+
+/* CSS for manual slider navigation */
+
+.navigationManual{
+    position: absolute;                               /* NOVO */
+    /* top: 520px;                                        NOVO */
+   /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+    width: 80%;
+    margin-top: 260px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn{
+    border: 2px solid rgb(240, 205, 6);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+.manual-btn:hover{
+    background: rgb(240, 205, 6);
+}
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+#radio5:checked ~ .first{
+    margin-left: -80%;
+}
+
+/* round-images */
+
+.round-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.round-image a {
+    text-decoration: none;
+}
+
+.round-image p {
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+}
+
+.round-image-container {
+    padding-bottom: 30px;
+    margin-bottom: 130px;                                     /* NOVO */
+    margin-top: 100px;                                        /* NOVO */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.round-image img {
+    height: 144px;
+    width: 156px;
+}
+
+.slide-subtitle {
+    margin-top: 100px; 
+    margin-bottom: 30px;
+}
+
+.slide-subtitle2 {
+    margin-bottom: 10px;
+}
+
+.slide-subtitle, .slide-subtitle2 {
+    color: rgb(3, 32, 94);
+    letter-spacing: .1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+/* Responsividade */
+/* @media screen and (max-width:990px) {
+    .navigationAuto {
+        z-index: -2;
+    }
+    .navigationManual {
+        z-index: -1;
+        top: 520px; 
+    }
+
+    .slide {
+        z-index: -3;
+    }
+} */
+
+@media screen and (min-width:1200px) and (max-width:1240px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 250px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 20px;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        top: 520px;                                        /* NOVO */
+       /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+       width: 80%;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 20px;
+    }
+}
+@media screen and (min-width:1000px) and (max-width:1199px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 220px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 20px;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        top: 520px;                                        /* NOVO */
+       /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+       width: 80%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 20px;
+    }
+}
+
+
+@media screen and (min-width:901px) and (max-width:1000px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 210px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 5px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 5px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual {
+        position: absolute; /* NOVO */
+        /* top: 520px; NOVO */
+        /*  z-index: -1;  */ /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */
+        width: 80%;
+        margin-top: -90px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 5px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:768px) and (max-width:800px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 200px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 5px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+        /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+        width: 80%;
+        margin-top: 200px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 5px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:801px) and (max-width:900px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 210px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 5px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 5px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+        /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+        width: 80%;
+        margin-top: 210px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 5px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:768px) and (max-width:800px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 200px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 5px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+        /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+        width: 80%;
+        margin-top: 200px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 5px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:651px) and (max-width:767px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 200px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 5px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+       /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+       width: 80%;
+        margin-top: 200px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 5px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:526px) and (max-width:650px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 190px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 1px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+        /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+        width: 80%;
+        margin-top: 190px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 1px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:415px) and (max-width:525px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 180px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 1px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+        /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+        width: 80%;
+        margin-top: 180px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 1px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 3px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+@media screen and (min-width:280px) and (max-width:414px){
+    .navigationAuto{
+        position: absolute;                                  /* NOVO */
+        /* z-index: -1;       */                                  /*  NOVO */
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin-top: 170px;
+    }
+    
+    .navigationAuto div:not(:last-child){
+        margin-right: 1px;
+    }
+    .navigationAuto div{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 2px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+    .navigationManual{
+        position: absolute;                               /* NOVO */
+        /* top: 520px;                                        NOVO */
+       /*  z-index: -1;  */                                       /*  NOVO  -> coloca pra trás do menu mas impede marcar a bolinha */ 
+       width: 80%;
+        margin-top: 170px;
+        display: flex;
+        justify-content: center;
+    }
+    .manual-btn:not(:last-child){
+        margin-right: 1px;
+    }
+    .manual-btn{
+        border: 2px solid rgb(240, 205, 6);
+        padding: 2px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+    }
+}
+
+@media screen and (min-width:1100px) and (max-width:1239px) {
+    .nnavigationManual {
+        margin-top: 50px;
+    }
+}
+

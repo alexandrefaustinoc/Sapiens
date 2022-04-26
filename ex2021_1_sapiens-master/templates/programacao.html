@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/programacao.css' %}">
+    <title>Programação</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <nav>
+                <div class="logo">
+                    <a href="{% url 'menu' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+                </div>
+                <ul class="nav-links">
+                    <li class="principal"><a href="{% url 'menu' %}">Início</a></li>
+                    
+                    <li class="principal"><a href="{% url 'programacao' event.slug %}">Programação</a></li>
+                    <li class="principal"><a>Aglomeração de Saberes</a>
+                        <ul>
+                            {% for room in rooms %}
+                                {% if room.slug != 'sapiens-familia' %}
+                                    <li class="hover submenu"><a href="{% url 'days' event.slug room.slug %}">{{room.name}}</a></li>
+                                {%endif%}
+                            {% endfor %}
+                            <li class="hover submenu"><a href="{% url 'apoiadores' event.slug %}">Equipe Apoiadora</a></li> 
+                        </ul>
+                    </li>
+                    <li class="principal"><a>Do Tempo do Ronca</a>
+                        <ul>
+                            <li class="hover submenu"><a href="{% url 'historia' event.slug %}">História</a></li>
+                            <li class="hover submenu"><a href="{% url 'edicoes_sapiens' event.slug %}">Edições Sapiens</a></li>
+                            <li class="hover submenu"><a href="{% url 'padlet' event.slug 'dois' 'mural' %}">Edição Atual</a></li>
+                        </ul>
+                    </li>
+                    <li class="principal"><a href="{% url 'days' event.slug 'sapiens-familia' %}">Sapiens Família</a></li>  
+                    <li class="principal"><a href="{% url 'desopilar' event.slug %}">Bora Desopilar?</a></li>
+                     
+                    <li class="principal"><a>{{user_name}}</a>
+                        <ul>
+                            
+                            <li class="hover submenu"><a href="{% url 'account_reset_password' %}">Redefinir senha</a></li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="hover botao" type="submit">Sair</button>
+                                </form>
+                            </li>
+                            {% if request.user.is_superuser %}
+                                <li class="hover submenu"> <a href="http://sapiens10anos.unipe.edu.br/admin/">Sala do Administrador</a></li>
+                            {% endif %}
+                            
+                        </ul>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="section-container1">
+        <section class="first-section">
+
+            <div class="wrapper1">
+
+                <div class="container">
+                    <h1 class="title-programacao">Programação</h1>
+                    <div class="day">
+                        <p class="date">
+                            <a class="date">19/07</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">08h - Gestão do Curso e visita in loco - Sala Encontros</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d " target="_blank" class="class">09h - Tecnologias digitais na pós-graduação em meio a pandemia: como fazer? - Sala Encontros</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d " target="_blank" class="class">10h - Bora alongar? Ginástica Laboral - Sala Bora Desopilar?</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">10h20 - Pedagogia da Motivação - Sala Encontros</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">11h20 - Como desenvolver o pensamento disruptivo? - Sala Encontros</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">14h - Curricularização da extensão: modelos de implementação - Sala Encontros</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">15h - Inovação, cooperação e transferência de tecnologia - Sala Encontros </a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">16h - Educação Financeira para toda a vida - Sala Sapiens Família</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">16h20 - O papel do docente da Pos-graduação stricto sensu diante das demandas CAPES - Sala Encontros</a>
+                        </p>
+                        <p>
+                            <a href="https://youtu.be/1uWCK7lF_U0" target="_blank" class="class"> 19h - Abertura - Novas Construções sociais da aprendizagem - Sala Encontros</a>
+                        </p>
+                    </div>
+                    <div class="day">
+                        <p>
+                            <a  class="date">20/07</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">08h - Yoga e respiração no dia a dia - Sala Bora Desopilar?</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d
+                            " target="_blank" class="class">09h - Aulas Vivas no Ambiente Remoto - Sala Palestras</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">10h - Fique Fit em Casa - Sala Bora Desopilar?</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d
+                            " target="_blank" class="class">10h30 - Como a transformação do professor acontece? - Sala Palestras</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">14h - Professora, professor: fazedores do futuro - Sala Palestras</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">15h - Ginástica Laboral - Sala Bora Desopilar?</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">15h30 - Diálogos virtuais, vivos e virtuosos na educação - Sala Palestras</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">16h30 - Conversando com a Pediatra - Sala Sapiens Família</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">18h - Espaços de aprendizagem para o século XXI - Sala Palestras</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">19h - Mindfulness e autocompaixão - Sala Bora Desopilar?</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">19h30 - Pedagogia da autonomia e da esperança - Sala Palestras</a>
+                        </p>
+
+
+                    </div>
+                    <div class="day">
+                        <p class="date">
+                            <a class="date">21/07</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzkyMDZjODQtYjc3Yy00NDBjLWIzZDktYjVkOTE4ZDI4YTBm%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">08h às 11h -  Acolhimento Discente  - Sala Boas Práticas </a>
+                        </p>
+                        <p>
+                            <a href= "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YmQ0MDNhMDgtZGJkNy00OTFmLWE3MDgtZmIxNjkyOGNmMzQw%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d"target="_blank" class="class">08h às 11h - Participação Discente - Sala Boas Práticas</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">08h às 11h - Inovação Educacional - Sala Boas Práticas</a>
+                        </p>
+                        <p>
+                            <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NjgyYzM3YjMtZjEyYy00MTRhLTk3M2YtNzYzNGYxNWVjZTll%40thread.v2/0?context=%7b%22Tid%22%3a%2271006117-0ed8-4080-96ab-e1f74197b7ee%22%2c%22Oid%22%3a%225ebe59c8-47a5-4008-8214-06dc47cb6ad8%22%7d" target="_blank" class="class">15h - A alegria e boniteza de educar - Sala Palestras</a>
+                        </p>
+
+                        
+                        <p>
+                            <a href="https://youtu.be/FmFCvqKgK48 " target="_blank" class="class">19h - Encerramento - Sala Palestras</a>
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="test">
+            <div class="line"></div>
+        </section>
+        <section class="second-section">
+            <h1 id="carinho-sapiens" class="title-programacao">Carinho Sapiens</h1>
+                <div class="card-container flex">
+                    <div class="card flex">
+                        <a href="https://api.whatsapp.com/send?phone=5583998280859&text=Oi%2C%20vim%20pela%20Sapiens!" target="_blank">
+                            <img src="{%static 'images/patrocinadores/bichos-e-caprichos.png'%}" alt="" class="patrocinador-img">
+                        </a>
+                            <div class="text">
+                                <p class="aligncenter">15% de desconto no 1º serviço</p>
+                            </div>
+                    </div>
+                    <div class="card flex">
+                        <a href="https://api.whatsapp.com/send?phone=5583988782279&text=Oi%20vim%20pela%20Sapiens!" target="_blank">
+                            <img src="{%static 'images/patrocinadores/wz-informatica.png'%}" alt="" class="patrocinador-img">
+                        </a>
+                            <div class="text">
+                                <p class="aligncenter">50% de desconto no 1º serviço</p>
+                            </div>
+                    </div>
+                    <div class="card flex">
+                        <a href="https://wa.me/message/M6TRUVSLVS76B1" target="_blank">
+                            <img src="{%static 'images/patrocinadores/livraria-do-luiz.png'%}" alt="" class="patrocinador-img">
+                        </a>
+                            <div class="text">
+                                <p class="aligncenter"> 30% em qualquer livro</p>
+                            </div>
+                    </div>
+                    <div class="card flex">
+                        <a href="https://instagram.com/drtnt?utm_medium=copy_link" target="_blank">
+                            <img src="{%static 'images/patrocinadores/dr-tnt.png'%}" alt="" class="patrocinador-img">
+                        </a>
+                            <div class="text">
+                                <p class="aligncenter">15% para toda coleção</p>
+                            </div>
+                    </div>
+                    <div class="card flex">
+                        <a href="https://api.whatsapp.com/send?phone=5583986201300" target="_blank">
+                            <img src="{%static 'images/patrocinadores/oticassantory.png'%}" alt="" class="patrocinador-img">
+                        </a>
+                            <div class="text">
+                                <p class="aligncenter">20% de desconto na 1ª compra</p>
+                            </div>
+                    </div>
+                    
+
+                </div>
+            <h2 class="title-descontos">DESCONTOS VÁLIDOS DURANTE O EVENTO</h2>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="sec quickLinks">
+                <h2>Parceiros</h2>
+                <ul class="patrocinador-lista">
+                    <li><a href="https://wa.me/558331333473" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/hemocentro.png' %}" alt="Logo da Hemocentro: Educação pela Saúde" ></a></li>
+
+                    <li><a href="https://instagram.com/atelierdocebia?utm_medium=copy_link" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/atelier-doce-bia.png'%}" alt="Logo do Patrocinador Atelier Doce Bia"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583998280859&text=Oi%2C%20vim%20pela%20Sapiens!" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/bichos-e-caprichos.png' %}" alt="Logo do Patrocinador Bichos e Caprichos"></a></li>
+
+
+                    <li><a href="https://wa.me/message/M6TRUVSLVS76B1" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/livraria-do-luiz.png' %}" alt="Logo do Patrocinador Livraria do Luiz"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583986201300" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/oticassantory.png' %}" alt="Logo do Patrocinador Ótica Santory"></a></li>
+
+                    <li><a href="http://www.saobraz.com.br/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/saobraz.png' %}" alt="Logo do Patrocinador São Braz"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583988782279&text=Oi%20vim%20pela%20Sapiens!" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/wz-informatica.png'%}" alt="Logo do Patrocinador WZ Informática"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/message/IWINW2MNSKU3H1?src=qr" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/controle-med.png'%}" alt="Logo do Patrocinador Controle Med Lab"></a></li>
+
+                    <li><a href="https://www.instagram.com/diporte_/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/diporte.png'%}" alt="Logo do Patrocinador Diporte"></a></li>
+
+                    <li><a href="https://instagram.com/drtnt?utm_medium=copy_link" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/dr-tnt.png'%}" alt="Logo do Patrocinador Dr. TNT"></a></li>
+
+                    <li><a href="https://www.instagram.com/saudemedica/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/saude-medica.png'%}" alt="Logo do Patrocinador Saúde Médica"></a></li>
+                </ul>
+            </div>
+            <div class="bigPatrocinador-div">
+                <a href="https://instagram.com/ferrazemaul?utm_medium=copy_link" target="_blank"><img class="bigPatrocinador" src="{% static 'images/patrocinadores/ferraz-e-maul-assessoria.png' %}" alt="Logo do Patrocinador Ferraz e Maul"></a>
+                <a href="http://somoslema.com.br/" target="_blank"><img class="bigPatrocinador" src="{% static 'images/patrocinadores/lema-engenharia.png' %}" alt="Logo do Patrocinador Lema Engenharia"></a>
+            </div>
+
+            <div class="sec contact">
+                <h2>Informações para Contato</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span>Rodovia BR-230,KM 22, S/N - Água Fria, João Pessoa</span>
+                    </li>
+                    <ul class="contato">
+                        <li><span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <p><a href="mailto:sapiens10anos@unipe.edu.br">sapiens10anos@unipe.edu.br</a></p>
+                        </li>
+    
+                        <li><span><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
+                            <p><a href="https://wa.me/message/44GXA6IAP4MOL1" target="_blank">Whatsapp</a></p>
+                        </li>
+    
+                        <ul class="sci">
+                            <li><a href="https://www.facebook.com/unipeoficial" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/unipeoficial" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/unipeoficial/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/user/UnipeOficial" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+      </footer>
+    <div class="copyrightText">
+        <p class="copyprogramacao">© 2021 Todos os direitos reservados.</p>
+    </div>
+</body>
+<script src="{% static 'js/header.js' %}"></script>
+
+</html>

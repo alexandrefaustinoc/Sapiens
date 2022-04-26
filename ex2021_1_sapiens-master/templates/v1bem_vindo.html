@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição Confirmada</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'css/v1bem_vindo.css' %}">
+</head>
+
+<body>
+    
+
+
+
+    <section class="first-section">
+        <div class="first-container">
+            <div class="logo-sapiens">
+                <img src="{% static 'images/logo-10anos.png' %}" alt="logo 10 anos">
+            </div>
+            <div class="white-line"></div>
+            <div class="logos">
+
+                <img src="{% static 'images/logo-50anos-padronizada.png' %}" alt="logo unipe 50 anos">
+                <img src="{% static 'images/logo-fabrica-padronizada.png' %}" alt=" logo fabrica de software">
+            </div>
+    </section>
+
+    <section class="second-section">
+        <div class="container">
+            <div class="logo-container">
+                <img src="{% static 'images/original_aniversario.png' %}" alt="Logo">
+            </div>
+                
+                <div class="input-container">
+                    <p> Seja bem-vindo (a) à plataforma da X edição da Semana de Atualização Pedagógica. A SAPIENS está completando dez anos, e é fruto da colaboração de todos! Sendo assim, a Pró-Reitoria Acadêmica – PROAC, do Centro Universitário de João Pessoa – UNIPÊ, agradece a todos que contribuíram e participaram para que a nossa formação, a cada edição, alcançasse o objetivo de despertar para novas práticas, métodos e ferramentas que perpassam o universo do ser e fazer docente.</p> 
+                    <p>As boas práticas, ao longo da trajetória da SAPIENS, mostraram-se como um momento rico de trocas, compartilhamentos e fortalecimento das ações que são desenvolvidas em sala de aula e que obtiveram resultados positivos. Assim, este ano não seria diferente.</p>    
+                    <p>Queremos muito saber que boas práticas você desenvolveu para que possamos compartilhar com todos os professores, e então, fortalecer a nossa comunidade docente. Bora compartilhar? Então, clica no  <a href="https://docs.google.com/forms/d/e/1FAIpQLScugQQQQruyhriCkd0YsRgMtGlUF2yja2ThaAFpBTwVmqD2uw/viewform?usp=pp_url" class="yellow-color" target="_blank">link e conta para nós a sua boa prática</a>.</p>
+                    
+                    
+                </div>
+            <p class="footer">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">SAIR</button>
+                </form>
+                
+                </a>
+            </p>
+
+        </div>
+    </section>
+
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+/venv
+.idea/
+__pycache__
+test.py
+events.html
+
+adapter.py

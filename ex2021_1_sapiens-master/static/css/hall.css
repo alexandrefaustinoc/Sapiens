@@ -1,0 +1,107 @@
+/* ------- GERAL ------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+/* ------- CANVA, MUSICA E HOTSPOTS -------- */
+#canva {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    width: 100px;
+    height: 800px;
+
+}
+
+#hall-song {
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+
+#hall-song:hover {
+    width: 300px;
+    height: 35px;
+    left: 35px;
+    transform: scale(1.2);
+}
+
+/* Hotspots (corujas) */
+.hotspot {
+    position: absolute;
+    visibility: hidden;                
+    border-left: 2px solid #07396C;
+    border-right: 2px solid #07396C;
+    border-top: 1px solid #07396C;
+    border-bottom: 3px solid #07396C;
+    border-radius: 20px;
+    padding: 1.2rem;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #07396C;
+    color:#fff;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translate3d(-50%, -100%, 0);
+    transition: opacity .3s, transform .3s, visibility .3s;
+    z-index: 1 !important;
+}
+  
+.hotspot.is-active {
+    visibility: visible;                   
+    display: inline-block;
+    opacity: 1;
+    padding: 1.2rem;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #07396C;
+    color:#fff;
+    transform: translate3d(-50%, -150%, 0);  
+     
+}
+  
+/* Mostra a janela com o texto ao passar pela coruja */
+.hotspot:hover  {
+    transform: translate3d(-50%, -180%, 0);   
+    visibility: visible;                        
+    display: inline-block;
+    opacity: 1;     /* ele mantém opacidade 1 do active, para que não suma*/;
+    border-radius: 20px;
+    padding: 1.2rem;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #07396C;
+    color:#fff;
+    cursor: pointer;
+}
+
+#view360 {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    transition: 0.5s;
+    
+}
+
+#view360:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+

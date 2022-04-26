@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hall.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sweetalert2.css' %}">
+
+    <title>Hall</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <nav>
+                <div class="logo">
+                    <a href="{% url 'menu' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+                </div>
+                <ul class="nav-links">
+                    <li class="principal"><a href="{% url 'menu' %}">Início</a></li>
+                    
+                    <li class="principal"><a href="{% url 'programacao' event.slug %}">Programação</a></li>
+                    <li class="principal"><a>Aglomeração de Saberes</a>
+                        <ul>
+                            {% for room in rooms %}
+                                {% if room.slug != 'sapiens-familia' %}
+                                    <li class="hover submenu"><a href="{% url 'days' event.slug room.slug %}">{{room.name}}</a></li>
+                                {%endif%}
+                            {% endfor %}
+                            <li class="hover submenu"><a href="{% url 'apoiadores' event.slug %}">Equipe Apoiadora</a></li> 
+                        </ul>
+                    </li>
+                    <li class="principal"><a>Do Tempo do Ronca</a>
+                        <ul>
+                            <li class="hover submenu"><a href="{% url 'historia' event.slug %}">História</a></li>
+                            <li class="hover submenu"><a href="{% url 'edicoes_sapiens' event.slug %}">Edições Sapiens</a></li>
+                            <li class="hover submenu"><a href="{% url 'padlet' event.slug 'dois' 'mural' %}">Edição Atual</a></li>
+                        </ul>
+                    </li>
+                    <li class="principal"><a href="{% url 'days' event.slug 'sapiens-familia' %}">Sapiens Família</a></li>  
+                    <li class="principal"><a href="{% url 'desopilar' event.slug %}">Bora Desopilar?</a></li>
+                     
+                    <li class="principal"><a>{{user_name}}</a>
+                        <ul>
+                            
+                            <li class="hover submenu"><a href="{% url 'account_reset_password' %}">Redefinir senha</a></li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="hover botao" type="submit">Sair</button>
+                                </form>
+                            </li>
+                            {% if request.user.is_superuser %}
+                                <li class="hover submenu"> <a href="http://sapiens10anos.unipe.edu.br/admin/">Sala do Administrador</a></li>
+                            {% endif %}
+                            
+                        </ul>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="audio">
+        <audio id="hall-song" controls loop>
+            <source src="{% static 'music/escadaria-roberto.mp3' %}" type="audio/mp3"> 
+        </audio>
+        <script>                                                 // JS PARA CONTROLAR O VOLUME DE ENTRADA 
+            var audio = document.getElementById("hall-song");
+            audio.volume = 0.1; 
+        </script>
+    </div>    
+    <div class="hotspot"></div>
+    <img id="view360" src="{% static 'images/360degrees.png' %}" alt="360-view">
+   
+
+    <script>
+        const rooms_names = [
+            {% for room in rooms %}
+            {
+                'name': "{{room.name}}",
+                'url': "{% url 'days' event.slug room.slug %}"
+            },
+            {% endfor %}
+            {
+                'name': "Bora Desopilar?",
+                'url': "{% url 'desopilar' event.slug %}"
+            },
+        ]
+    </script>
+
+    <script>
+        
+    </script>
+    <!----- Alert pop-up ----->
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/sweetalert2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+
+
+
+    <script src="{% static 'js/three.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+</body>
+
+</html>

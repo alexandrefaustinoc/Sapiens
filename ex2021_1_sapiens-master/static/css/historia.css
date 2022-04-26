@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Utilizar 100% da tela */
+
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  
+  /* background: #F7F7FC; */
+  
+}
+
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #07396C;
+  font-size: 16px;
+  /* font-size: clamp(1rem, vw, 1rem); */
+}
+
+.subtitulo-historia {
+    color: #07396C;
+    font-size: 17px;
+}
+
+.text {
+  color: #444;
+  font-weight: 600;
+  /* width: 50%; */
+  text-align: justify;
+  margin-bottom: 30px;
+  font-size: clamp(0.8rem, 1vw, 2rem);
+}
+.right {
+  text-align: right;
+  margin-bottom: 0px;
+}
+
+.text-container {
+  margin-right: 300px;
+  margin-left: 300px;
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+
+.yellow {
+  color: #DFAE25;
+}
+
+.mbottom {
+  margin-bottom: 30px;
+}
+
+.blue {
+  color: #07396C;
+}
+
+
+.title {
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .text-container {
+      margin-right: 20px;
+      margin-left: 20px;
+  }
+}

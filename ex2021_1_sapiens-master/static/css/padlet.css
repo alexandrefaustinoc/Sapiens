@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #F7F7FC;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 50px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 20px 0px 40px 40px;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    margin: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.014);
+    background-color: red;
+}
+
+.title {
+    color: #07396c;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.schedule {
+    color: #555555;
+    font-size: 18px;
+}
+
+.item a {
+    display: contents;
+    color: #07396C;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.show .surface-title.has-title.has-portrait .title-container[data-v-bcbe642c] {
+    min-height: 20%;
+}
+
+
+.padlets {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+section {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+iframe {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.padlet-embed {
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: #F4F4F4;
+}
+
+.padlet-embed p {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* .second-section {
+    display: flex;
+    flex: 0 0 50%;
+} */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100%;
+}
+
+@media screen and (min-width:1556px) {
+  
+}
+
+@media screen and (max-width:1024px) {
+    
+}
+
+@media screen and (max-width:768px) {
+    body {
+        /* position: relative; */
+        overflow-x: hidden;
+        /* width: 100%; */
+    }
+    
+
+}
+

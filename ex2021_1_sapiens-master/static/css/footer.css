@@ -1,0 +1,302 @@
+html, body {
+    overflow-x: hidden;
+}
+
+footer { 
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 50px;
+    background: #07396C;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    overflow: hidden;
+    /* NOVO*/
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+
+footer .footer-container .sec {
+    margin-right: 30px;
+}
+
+footer .footer-container .sec.aboutus {
+    width: 40%;
+}
+
+footer .footer-container h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    margin-right: 5rem;
+}
+
+footer .footer-container h2:before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #DFAE25;
+}
+
+footer p {
+    color: #fff;
+    text-align: center;
+}
+
+/* seção patrocinadores */
+.quickLinks {
+    position: relative;
+    width: 50%;                     
+
+}
+
+.quickLinks ul li {
+    list-style: none;
+}
+
+.quickLinks ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.quickLinks ul li a:hover {
+    color: #999;
+}
+
+.patrocinador-lista {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+
+.patrocinador-img {
+    margin: 15px 15px;
+    width: 90px;
+    height: 90px;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    border: 10px solid transparent;
+}
+
+.patrocinador-img:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(15px 10px 5px rgba(0, 0, 0, .5));
+    border: 5px solid #136497;
+    border-radius: 50%;
+}
+
+.bigPatrocinador-div {
+    position: relative; /* novo */
+    display: flex;
+    flex-direction: column;
+    margin-right: 5rem;
+    margin-left: 1rem;
+    margin-top: 7rem;
+    width: 20%;
+}
+
+
+.bigPatrocinador {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    border-radius: 120px;
+    transition: all .7s ease-in-out;
+}
+
+
+.bigPatrocinador:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(15px 10px 5px rgba(0, 0, 0, .5));
+    border: 5px solid #136497;
+}
+
+/* seção informações para contato */
+.contact {
+    width: 30%;
+    margin-right: 0 !important;
+}
+
+.info {
+    margin-top: 35px;
+}
+
+.contact .info {
+    position: relative;
+}
+
+.contact .info li {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.contact .info li span:nth-child(1) {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.contact .info li span {
+    color: #fff;
+}
+
+.contact .info li a {
+    color: rgb(252, 252, 252);
+    text-decoration: none;
+}
+
+.contact .info li a:hover {
+    color: #999;
+}
+
+/* email e whatsapp */
+.contato span,
+p a {
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    color: #fff;
+}
+
+.contato li {
+    display: inline-block;
+}
+
+.contato p a:hover {
+    color: #999;
+}
+
+/* ícones redes sociais */
+.sci {
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sci li {
+    list-style: none;
+}
+
+.sci li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #245383;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.sci li a:hover {
+    background: #DFAE25;
+}
+
+.sci li a .fa {
+    color: #fff;
+    font-size: 20px;
+}
+
+/* direitos reservados */
+.copyrightText {
+    width: 100%;
+    background-color: #245383;
+    padding: 5px 100px;
+    text-align: center;
+    color: #fff;
+    font-size: small;
+}
+
+/* responsividade */
+
+@media screen and (min-width: 280px) and (max-width:319px) {
+
+    footer {
+        width: 100%;
+        box-sizing: unset;
+    }
+
+    .bigPatrocinador {
+        width: 150px!important;
+        height: 150px!important;
+    }
+
+    .copyrightText {
+        width: 100%;
+        box-sizing: unset;
+    }
+
+}
+
+@media (max-width:991px) {
+    footer {
+        padding: 16px;
+    }
+
+    footer .footer-container {
+        flex-direction: column;
+    }
+
+    footer .footer-container .sec {
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+
+    footer .footer-container .sec.aboutus,
+    .quickLinks,
+    .contact {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .bigPatrocinador-div {
+        margin-top: 0;
+        
+    }
+
+    .bigPatrocinador {
+
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        border-radius: 100px;
+        transition: all .7s ease-in-out;
+    }
+
+    .bigPatrocinador:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(15px 10px 5px rgba(0, 0, 0, .5));
+        border: 5px solid #136497;
+        border-radius: 100px;
+    }
+
+    #infoH2 {
+        margin-top: 3rem;
+    }
+
+    .copyrightText {
+        padding: 8px 8px;
+    }
+}
+

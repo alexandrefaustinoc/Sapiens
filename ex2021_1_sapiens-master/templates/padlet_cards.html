@@ -1,0 +1,311 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rooms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    <title>Edições Sapiens</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <nav>
+                <div class="logo">
+                    <a href="{% url 'menu' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+                </div>
+                <ul class="nav-links">
+                    <li class="principal"><a href="{% url 'menu' %}">Início</a></li>
+                    
+                    <li class="principal"><a href="{% url 'programacao' event.slug %}">Programação</a></li>
+                    <li class="principal"><a>Aglomeração de Saberes</a>
+                        <ul>
+                            {% for room in rooms %}
+                                {% if room.slug != 'sapiens-familia' %}
+                                    <li class="hover submenu"><a href="{% url 'days' event.slug room.slug %}">{{room.name}}</a></li>
+                                {%endif%}
+                            {% endfor %}
+                            <li class="hover submenu"><a href="{% url 'apoiadores' event.slug %}">Equipe Apoiadora</a></li> 
+                        </ul>
+                    </li>
+                    <li class="principal"><a>Do Tempo do Ronca</a>
+                        <ul>
+                            <li class="hover submenu"><a href="{% url 'historia' event.slug %}">História</a></li>
+                            <li class="hover submenu"><a href="{% url 'edicoes_sapiens' event.slug %}">Edições Sapiens</a></li>
+                            <li class="hover submenu"><a href="{% url 'padlet' event.slug 'dois' 'mural' %}">Edição Atual</a></li>
+                        </ul>
+                    </li>
+                    <li class="principal"><a href="{% url 'days' event.slug 'sapiens-familia' %}">Sapiens Família</a></li>  
+                    <li class="principal"><a href="{% url 'desopilar' event.slug %}">Bora Desopilar?</a></li>
+                     
+                    <li class="principal"><a>{{user_name}}</a>
+                        <ul>
+                            
+                            <li class="hover submenu"><a href="{% url 'account_reset_password' %}">Redefinir senha</a></li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="hover botao" type="submit">Sair</button>
+                                </form>
+                            </li>
+                            {% if request.user.is_superuser %}
+                                <li class="hover submenu"> <a href="http://sapiens10anos.unipe.edu.br/admin/">Sala do Administrador</a></li>
+                            {% endif %}
+                            
+                        </ul>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="cards"> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/09mW12N/SAPIENS-1-ED.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">1ª Edição - Sapiens</p>
+                <p class="description">Normas e procedimentos acadêmicos</p>
+                <a href="{% url 'padlet' event.slug 'um' '1'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/wNBtTkb/Sapiens-2-Ed.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">2ª Edição - Sapiens</p>
+                <p class="description">Metodologias ativas de ensino e aprendizagem essenciais para fortalecer o ensino</p>
+                <a href="{% url 'padlet' event.slug 'um' '2'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/dMgMvDF/SAPIENS-3.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">3ª Edição - Sapiens</p>
+                <p class="description">Processo avaliativo no ensino superior</p>
+                <a href="{% url 'padlet' event.slug 'um' '3' %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/RcHQxck/SAPIENS-4.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">4ª Edição - Sapiens</p>
+                <p class="description">Qualidade acadêmica no ensino superior</p>
+                <a href="{% url 'padlet' event.slug 'um' '4' %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/kyVW2xY/SAPIENS-5.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">5ª Edição - Sapiens</p>
+                <p class="description">Avanços e inovações na gestão da sala de aula presencial e virtual</p>
+                <a href="{% url 'padlet' event.slug 'um' '5'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/NjTGBRK/SAPIENS-6.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">6ª Edição - Sapiens</p>
+                <p class="description">Aprendizagem e metodologias ativas</p>
+                <a href="{% url 'padlet' event.slug 'dois' '6'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/WsLmvVj/Sapiens-7-Ed.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">7ª Edição - Sapiens</p>
+                <p class="description">Gestão em sala de aula, ação e mediação para aprendizagem</p>
+                <a href="{% url 'padlet' event.slug 'dois' '7'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/m8HLJsZ/SAPIENS-8.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">8ª Edição - Sapiens</p>
+                <p class="description">Docência entre o ser e o fazer</p>
+                <a href="{% url 'padlet' event.slug 'dois' '8'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/Tgm7gmh/SAPIENS-9.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">9ª Edição - Sapiens</p>
+                <p class="description">Educação do futuro, hoje</p>
+                <a href="{% url 'padlet' event.slug 'dois' '9'  %}">Ingressar</a>
+            </div>
+        </div> 
+       <!--Sapiens kids-->
+         
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/GxrV1pm/SAPIENS-KIDS-2.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">Sapiens Kids - 1ª e 2ª Edições</p>
+                <p class="description">Fotos da 1ª e 2ª Edições </p>
+                <a href="{% url 'padlet' event.slug 'tres' '2'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/WPnDrSX/SAPIENS-KIDS-3.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">Sapiens Kids - 3ª Edição</p>
+                <p class="description">Fotos da 3ª Edição </p>
+                <a href="{% url 'padlet' event.slug 'tres' '3' %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/rxFPx35/SAPIENS-KIDS-4.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">Sapiens Kids - 4ª Edição</p>
+                <p class="description">Fotos da 4ª Edição </p>
+                <a href="{% url 'padlet' event.slug 'tres' '4' %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/kBg97TW/SAPIENS-KIDS-5.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">Sapiens Kids - 5ª Edição</p>
+                <p class="description">Fotos da 5ª Edição </p>
+                <a href="{% url 'padlet' event.slug 'tres' '5'  %}">Ingressar</a>
+            </div>
+        </div> 
+        <div class="cards-container">
+            
+            <div class='banner-img' class="responsive-img">
+                <img src="https://i.ibb.co/vz6yyrG/SAPIENS-KIDS-6.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="description-container">
+                <p class="name" title="">Sapiens Kids - 6ª Edição</p>
+                <p class="description">Fotos da 6ª Edição </p>
+                <a href="{% url 'padlet' event.slug 'quatro' '6' %}">Ingressar</a>
+            </div>
+        </div> 
+
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="sec quickLinks">
+                <h2>Parceiros</h2>
+                <ul class="patrocinador-lista">
+                    <li><a href="https://wa.me/558331333473" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/hemocentro.png' %}" alt="Logo da Hemocentro: Educação pela Saúde"></a></li>
+
+                    <li><a href="https://instagram.com/atelierdocebia?utm_medium=copy_link" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/atelier-doce-bia.png'%}" alt="Logo do Patrocinador Atelier Doce Bia"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583998280859&text=Oi%2C%20vim%20pela%20Sapiens!" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/bichos-e-caprichos.png' %}" alt="Logo do Patrocinador Bichos e Caprichos"></a></li>
+
+
+                    <li><a href="https://wa.me/message/M6TRUVSLVS76B1" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/livraria-do-luiz.png' %}" alt="Logo do Patrocinador Livraria do Luiz"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583986201300" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/oticassantory.png' %}" alt="Logo do Patrocinador Ótica Santory"></a></li>
+
+                    <li><a href="http://www.saobraz.com.br/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/saobraz.png' %}" alt="Logo do Patrocinador São Braz"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/send?phone=5583988782279&text=Oi%20vim%20pela%20Sapiens!" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/wz-informatica.png'%}" alt="Logo do Patrocinador WZ Informática"></a></li>
+
+                    <li><a href="https://api.whatsapp.com/message/IWINW2MNSKU3H1?src=qr" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/controle-med.png'%}" alt="Logo do Patrocinador Controle Med Lab"></a></li>
+
+                    <li><a href="https://www.instagram.com/diporte_/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/diporte.png'%}" alt="Logo do Patrocinador Diporte"></a></li>
+
+                    <li><a href="https://instagram.com/drtnt?utm_medium=copy_link" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/dr-tnt.png'%}" alt="Logo do Patrocinador Dr. TNT"></a></li>
+
+                    <li><a href="https://www.instagram.com/saudemedica/" target="_blank"><img class="patrocinador-img" src="{% static 'images/patrocinadores/saude-medica.png'%}" alt="Logo do Patrocinador Saúde Médica"></a></li>
+                </ul>
+            </div>
+            <div class="bigPatrocinador-div">
+                <a href="https://instagram.com/ferrazemaul?utm_medium=copy_link" target="_blank"><img class="bigPatrocinador" src="{% static 'images/patrocinadores/ferraz-e-maul-assessoria.png' %}" alt="Logo do Patrocinador Ferraz e Maul"></a>
+                <a href="http://somoslema.com.br/" target="_blank"><img class="bigPatrocinador" src="{% static 'images/patrocinadores/lema-engenharia.png' %}" alt="Logo do Patrocinador Lema Engenharia"></a>
+            </div>
+
+            <div class="sec contact">
+                <h2>Informações para Contato</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span>Rodovia BR-230,KM 22, S/N - Água Fria, João Pessoa</span>
+                    </li>
+                    <ul class="contato">
+                        <li>
+                            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <p><a href="mailto:sapiens10anos@unipe.edu.br">sapiens10anos@unipe.edu.br</a></p>
+                        </li>
+
+                        <li>
+                            <span><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
+                            <p><a href="https://wa.me/message/44GXA6IAP4MOL1" target="_blank">Whatsapp</a></p>
+                        </li>
+
+                        <ul class="sci">
+                            <li><a href="https://www.facebook.com/unipeoficial" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/unipeoficial" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/unipeoficial/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.youtube.com/user/UnipeOficial" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyrightText">
+        <p>© 2021 Todos os direitos reservados.</p>
+    </div> 
+
+
+
+
+</body>
+<script src="{% static 'js/header.js' %}"></script>
+
+</html>
